@@ -1,0 +1,120 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#include <cmath>
+using namespace std;
+int Tusk = 9;
+int main() {
+	if (Tusk == 1) {
+	    int a;
+	    int b;
+	    cin >> a;
+	    cin >> b;
+	    cout << "P = " << 2 * ( a + b )   << endl;
+	    cout << "S = " << a * b << endl;
+	}
+	if (Tusk == 2) {
+	    int a;
+	    int b;
+	    int c;
+	    cin >> a;
+	    cin >> b;
+	    cin >> c;
+	    cout << "V = " << a * b * c << endl;
+	    cout << "S = " << 2 * (a * b + b * c + a * c) << endl;
+	}
+	if (Tusk == 3){
+	    //Тут насколько я понял надо найти именно квадратов
+	    int a;
+	    int b;
+	    cin >> a;
+	    cin >> b;
+	    b = b * b;
+	    a = a * a;
+	    cout << "Произведение " << a * b << endl;
+	    cout << "сумма " << a + b << endl;
+	    cout << "Разность " << a - b << endl;
+	    cout << "Частное " << a / b << endl;
+	}
+	if (Tusk == 4){
+	    int a;
+	    int b;
+	    cin >> a;
+	    cin >> b;
+	    b = abs(b);
+	    a = abs(a);
+	    cout << "Произведение " << a * b << endl;
+	    cout << "сумма " << a + b << endl;
+	    cout << "Разность " << a - b << endl;
+	    cout << "Частное " << a / b << endl;
+	}
+	if (Tusk == 5){
+	    int a;
+	    int b;
+	    cin >> a;
+	    cin >> b;
+	    int c = sqrt((a * a) + (b * b));
+	    cout << "Гипотинуза = " << c << endl;
+	    cout << "P = " << a + b + c << endl;
+	}
+	if (Tusk == 6){
+	    int xOne;
+	    int yOne;
+	    int xTwo;
+	    int yTwo;
+	    cin >> xOne;
+	    cin >> xTwo;
+	    cin >> yOne;
+	    cin >> yTwo;
+	    cout << "Растояние = " << sqrt(((xTwo - xOne) * (xTwo - xOne)) + ((yTwo = yOne) * (yTwo = yOne)));
+	}
+	if (Tusk == 7){
+	    int xOne;
+	    int yOne;
+	    int xTwo;
+	    int yTwo;
+	    int xThree;
+	    int yThree;
+	    cin >> xOne;
+	    cin >> xTwo;
+	    cin >> yOne;
+	    cin >> yTwo;
+	    cin >> xThree;
+	    cin >> yThree;
+	    int a = sqrt(pow(xTwo - xOne, 2) + pow(yTwo - yOne, 2));
+	    int b = sqrt(pow(xThree - xTwo, 2) + pow(yThree - yTwo, 2));
+	    int c = sqrt(pow(xOne - xThree, 2) + pow(yOne - yThree, 2));
+	    int perimitr = a + b + c;
+	    cout << "Пермитр = " << perimitr << endl;
+	    int p = perimitr / 2;
+	    cout << "Полу-пермитр = " << p << endl;
+	    cout << "Площадь = " << sqrt(p * (p - a) * (p - b) * (p - c));
+	}
+	if (Tusk == 8){
+	    double F;
+	    cin >> F;
+	    cout << "цельсии = " << (F - 32) * ( 5 / 9 ) << endl;
+	}
+	if (Tusk == 9){
+	    double x, a, y, b;
+	    cin >> x >> a;
+	    cin >> y >> b;
+	    cout << "Цена 1 кг шоколада = " << a / x << endl;
+        cout << "Цена 1 кг ирисок = " << y / b << endl;
+        cout << "Шоколода дороже в " << (a / x) / (y / b) << endl;
+	}
+	if (Tusk == 10){
+	    int a,b;
+	    cin >> a;
+	    cin >> b;
+	    cout << "Кол-во B " << a / b << endl;
+	}
+    if (Tusk == 11){
+        int a;
+        cin >> a;
+        int one = a / 100;
+        int two = one % 10;
+        int three = a % 10;
+        cout << "Summa = " << one + two + three << endl;
+        cout << "Произведение цифр = " << one * two * three << endl;
+    }
+}
