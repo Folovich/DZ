@@ -117,4 +117,20 @@ int main() {
         cout << "Summa = " << one + two + three << endl;
         cout << "Произведение цифр = " << one * two * three << endl;
     }
+	if (Tusk == 12){
+        int a;
+        cin >> a;
+        cout << "Цифра в сотне " << (a / 100) % 10;
+    }
+    if (Tusk == 13){
+        int N;
+        cin >> N;
+        cout << "HOURS = " << N / 3600 << endl;
+        
+    }
+    if (Tusk == 14){
+        int k;
+        cin >> k;
+        cout << "Номер недели = " << (k % 7) << endl;
+    }
 }
