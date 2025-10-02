@@ -2,87 +2,88 @@
 #include <cmath>
 #include <ctime>
 using namespace std;
-int Tusk = 8;
+int Tusk = 1;
 int main() {
-   if (Tusk == 1){
-       int a, summ;
-       cin >> a;
-       for (int i = 1; i <= a; i++){
-            summ = summ + i;
-       }
-       cout << summ;
-   }
-   if (Tusk == 2){
-       float lvl;
-       cout << "Уровень" << " Год" << endl;
-       for (int i = 1; i <= 25; i++){
-           lvl += 1.5;
-           cout << lvl << "\t" << i << endl;
-       }
-   }
-   if (Tusk == 3){
-       cout << "Время" << " Каллории" << endl;
-       for (int time = 5; time <= 30; time += 5){
-           cout << time << "\t  " << time * 3.6 << endl;
-       }
-   }
-   if (Tusk == 4){
-       cout << "Напишите скорость транспорта (миль/час) и сколько часов он ехал" << endl;
-       int time; 
-       float speed;
-       cin >> speed >> time;
-       if (speed <= -1 || time < 1){
-           cout << "Вы ввели не правильно значение";
-           return 0;
-       }
-       cout << "Час" << " Пробег" << endl;
-       for(int i = 1; i <= time; i++){
-           cout << i << "\t  " << speed * i << endl; 
-       }
-   }
-   if (Tusk == 5){
-       int day;
-       double PayDay,summ;
-       cout << "Введите кол-во рабочих дней" << endl;
-       cin >> day;
-       if (day < 1){
-           cout << "Введено не правильное значение";
-           return 0;
-       }
-       cout << "День" << " Зарплата" << endl;
-       for (int i = 1; i <= day; i++){
+    
+    if (Tusk == 1){
+        int a, summ;
+        cin >> a;
+        for (int i = 1; i <= a; i++){
+                summ = summ + i;
+        }
+        cout << summ;
+    }
+    if (Tusk == 2){
+        float lvl;
+        cout << "Уровень" << " Год" << endl;
+        for (int i = 1; i <= 25; i++){
+            lvl += 1.5;
+            cout << lvl << "\t" << i << endl;
+        }
+    }
+    if (Tusk == 3){
+        cout << "Время" << " Каллории" << endl;
+        for (int time = 5; time <= 30; time += 5){
+            cout << time << "\t  " << time * 3.6 << endl;
+        }
+    }
+    if (Tusk == 4){
+        cout << "Напишите скорость транспорта (миль/час) и сколько часов он ехал" << endl;
+        int time; 
+        float speed;
+        cin >> speed >> time;
+           if (speed <= -1 || time < 1){
+            cout << "Вы ввели не правильно значение";
+            return 0;
+        }
+        cout << "Час" << " Пробег" << endl;
+        for(int i = 1; i <= time; i++){
+            cout << i << "\t  " << speed * i << endl; 
+        }
+    }
+    if (Tusk == 5){
+        int day;
+        double PayDay,summ;
+        cout << "Введите кол-во рабочих дней" << endl;
+        cin >> day;
+        if (day < 1){
+            cout << "Введено не правильное значение";
+            return 0;
+        }
+        cout << "День" << " Зарплата" << endl;
+        for (int i = 1; i <= day; i++){
             PayDay = (pow(2, i - 1)) / 100;
             summ += PayDay;
             cout << i << "\t" << PayDay << endl;
-       }
-       cout << "Общая сумма - $" << summ;
-   }
-   if (Tusk == 6){
-       int floorZ, room, used, allRoom = 0, usedRoom = 0, voidRoom = 0;
-       double procent;
-       cout << "Сколько этажей в отеле?" << endl;
-       cin >> floorZ;
-       if (floorZ < 1){
-           cout << "Сколько этажей в отеле?";
-           return 0;
-       }
-       for (int i = 1; i <= floorZ; i++){
-           if (i == 13){
-               continue;
-           }
-           cout << "Сколько комнат на " << i << " этаже? Сколько из них занято?" << endl;
-           cin >> room >> used;
-           allRoom += room;
-           usedRoom += used;
-           voidRoom += (room - used);
-       }
-       procent = (usedRoom / allRoom) * 100;
-       cout << "Общее число комнат - " << allRoom << endl;
-       cout << "Занятые комнаты - " << usedRoom << endl;
-       cout << "Свободные комнаты - " << voidRoom << endl;
-       cout << "Процент занятых - " << procent << "%";
-   }
-   if (Tusk == 7){
+        }
+        cout << "Общая сумма - $" << summ;
+    }
+    if (Tusk == 6){
+        int floorZ, room, used, allRoom = 0, usedRoom = 0, voidRoom = 0;
+        double procent;
+        cout << "Сколько этажей в отеле?" << endl;
+        cin >> floorZ;
+        if (floorZ < 1){
+            cout << "Сколько этажей в отеле?";
+            return 0;
+        }
+        for (int i = 1; i <= floorZ; i++){
+            if (i == 13){
+                continue;
+            }
+            cout << "Сколько комнат на " << i << " этаже? Сколько из них занято?" << endl;
+            cin >> room >> used;
+            allRoom += room;
+            usedRoom += used;
+            voidRoom += (room - used);
+        }
+        procent = (usedRoom / allRoom) * 100;
+        cout << "Общее число комнат - " << allRoom << endl;
+        cout << "Занятые комнаты - " << usedRoom << endl;
+        cout << "Свободные комнаты - " << voidRoom << endl;
+        cout << "Процент занятых - " << procent << "%";
+    }
+    if (Tusk == 7){
         int personaNumber;
         double valueMoney, tax, taxFed, fica;
         double totalValue = 0, totalTax = 0, totalTaxFed = 0, totalFica = 0, whiteMoney = 0;
