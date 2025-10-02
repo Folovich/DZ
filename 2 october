@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cmath>
+#include <ctime>
 using namespace std;
-int Tusk = 7;
+int Tusk = 8;
 int main() {
    if (Tusk == 1){
        int a, summ;
@@ -85,49 +86,66 @@ int main() {
         int personaNumber;
         double valueMoney, tax, taxFed, fica;
         double totalValue = 0, totalTax = 0, totalTaxFed = 0, totalFica = 0, whiteMoney = 0;
+        while (true){
+            cout << "Введите номер сотрудника (Введите 0 для выхода)" << endl;
+            cin >> personaNumber;
+        
+            if (personaNumber == 0){
+                break;
+            }
+        
+            cout << "Введите валовую зарпалату" << endl;
+            cin >> valueMoney;
+        
+            cout << "Введите штатный налог" << endl;
+            cin >> tax;
+        
+            cout << "Введите федеральный налог" << endl;
+            cin >> taxFed;
+        
+            cout << "Введите удержание FICA" << endl;
+            cin >> fica;
+            if ((fica || taxFed || tax) > valueMoney){
+                cout << "Значение налогов/удержаний не может быть больше зарплаты" << endl;
+                continue;
+            }
+            if (valueMoney < 0 || tax < 0 || taxFed < 0){
+                cout << "начение налогов/удержаний не может быть равно 0" << endl;
+                continue;
+            }
+        
+            if (fica + tax + taxFed > valueMoney){
+                cout << "Сумма налогов и удержаний не могут быть больше зарплаты" << endl;
+                continue;
+            }
+            totalValue += valueMoney;
+            totalTax += tax;
+            totalTaxFed += taxFed;
+            totalFica += fica;
+            whiteMoney += (valueMoney - (tax + taxFed + fica));
+           }
+           cout << "Итог вaловой зарплаты - " << totalValue << endl;
+           cout << "Итог штатного налога - " << totalTax << endl;
+           cout << "Итог федерального налога - " << totalTaxFed << endl;
+           cout << "Итог FICA - " << totalFica << endl;
+           cout << "Итог чистой зарплаты - " << whiteMoney << endl;
+   }
+   if (Tusk == 8){
+       srand(time(0));
+       int randomNumber = (rand()) / 10000000, i, tryN = 0;
+       cout << "Угадай число" << endl;
        while (true){
-        cout << "Введите номер сотрудника (Введите 0 для выхода)" << endl;
-        cin >> personaNumber;
-        
-        if (personaNumber == 0){
-            break;
-        }
-        
-        cout << "Введите валовую зарпалату" << endl;
-        cin >> valueMoney;
-        
-        cout << "Введите штатный налог" << endl;
-        cin >> tax;
-        
-        cout << "Введите федеральный налог" << endl;
-        cin >> taxFed;
-        
-        cout << "Введите удержание FICA" << endl;
-        cin >> fica;
-        if ((fica || taxFed || tax) > valueMoney){
-            cout << "Значение налогов/удержаний не может быть больше зарплаты" << endl;
-            continue;
-        }
-        if (valueMoney < 0 || tax < 0 || taxFed < 0){
-            cout << "начение налогов/удержаний не может быть равно 0" << endl;
-            continue;
-        }
-        
-        if (fica + tax + taxFed > valueMoney){
-            cout << "Сумма налогов и удержаний не могут быть больше зарплаты" << endl;
-            continue;
-        }
-        totalValue += valueMoney;
-        totalTax += tax;
-        totalTaxFed += taxFed;
-        totalFica += fica;
-        whiteMoney += (valueMoney - (tax + taxFed + fica));
+          cin >> i;
+          tryN++;
+          if (i == randomNumber){
+              cout << "Угадал" << endl;
+              cout << "Кол-во попыток - " << tryN;
+          } else if (i > randomNumber){
+              cout << "Too high, try again." << endl;;
+          } else{
+              cout << "Too low, try again." << endl;
+          }
        }
-       cout << "Итог вaловой зарплаты - " << totalValue << endl;
-       cout << "Итог штатного налога - " << totalTax << endl;
-       cout << "Итог федерального налога - " << totalTaxFed << endl;
-       cout << "Итог FICA - " << totalFica << endl;
-       cout << "Итог чистой зарплаты - " << whiteMoney << endl;
    }
     return 0;
 }
