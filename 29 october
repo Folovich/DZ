@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+int main (){
+    // tusk 1
+    const int size = 20;
+    int arr[size] = {0,-2,-3,-4,-5,6,7,8,9,10,1,1,2,2,4,2,42,42,1,2};
+    int minus[size] = {};
+    int plus[size] = {};
+    int minCount = 0, plusCount = 0;
+    for (int i = 0; i < size; i++){
+        if (arr[i] > 0){
+            plus[plusCount] = arr[i];
+            plusCount++;
+        } else if (arr[i] < 0){
+            minus[minCount] = arr[i];
+            minCount++;
+        }
+        
+    }
+    cout << "Целый массив: ";
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    cout << "Положительные числа: ";
+    for (int i = 0; i < plusCount; i++){
+        cout << plus[i] << " ";
+    }
+    cout << endl;
+    cout << "Отрицательные числа: ";
+    for (int i = 0; i < minCount; i++){
+        cout << minus[i] << " ";
+    }
+    cout << endl;
+    // tusk 2
+    int left, right;
+    for (int i = 1; i < size; i++){
+        right = arr[i];
+        left = arr[i-1];
+        if (right > 0 and left > 0 or right < 0 and left < 0 ){
+            cout << "Число что слева " << left << " с индексом " << i-1 << " Число что справо " << right << " с индексом " << i << endl;
+        }
+    }
+    // tusk 3
+    int bestEven = 0, even = 0;
+    for (int i = 0; i < size; i++){
+        if (arr[i] % 2 == 0){
+            even++;
+            if (even > bestEven){
+                bestEven = even;
+            }
+        } else{
+            even = 0;
+        }
+    }
+    cout << "Длинна самой длинной последовательности - " << bestEven << endl;
+    // tusk 4
+    int *max = arr;
+    for (int i = 0; i < size; i++){
+        if (arr[i] > *max){
+            max = &arr[i];
+        }
+    }
+    int index = max - arr;
+    for (int i = index + 1; i < size; i++){
+        arr[i] = 1;
+    }
+    cout << "Макс элемент - " << *max << endl;
+    cout << "Измененный массив: ";
+    for (int i = 0; i < size; i++){
+        cout << arr[i] << " ";
+    }
+}
