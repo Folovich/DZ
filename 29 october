@@ -128,5 +128,164 @@ int main (){
             cout << "В массиве нет числа которое нечётное, делится на 5, и больше среднего арифметического всех элементов." << endl;
         }
     }
+    // tusk 6
+    const int sizeArr = 17;
+    int newArr[sizeArr] = {42,1,4,2,-2,6,-4,12,-42,1,44,1,2,3,4,5,0};
+    int len = 0, bestLen = 0;
+    int oldRaz = 1;
+    int leftNum, bestLeftNum = 0;
+    for (int i = 0; i < sizeArr - 1; i++){
+        int raz = newArr[i+1] - newArr[i];
+        if (raz == 0){
+            len = 0;
+            continue;
+        }
+
+        if (raz * oldRaz < 0){
+            len++;
+            if (len > bestLen){
+                bestLen = len;
+                bestLeftNum = i - len + 2;
+            }
+        } else {
+            len = 2;
+        }
+        oldRaz = raz;
+    }
+    cout << "Самый длинный подотрезок, на котором знаки соседних разностей (a[i+1]−a[i]) строго чередуются: ";
+    for (int i = bestLeftNum; i < bestLeftNum + bestLen; i++){
+        cout << newArr[i] << " ";
+    }
+    cout << " Длинна отрезка:" << bestLen;
+    cout << endl;
+    // task 7
+    int arrA[12] = {1,2,4,-1,5,7,-10,5,6,1,0,0};
+    int k = 0;
+    while(k < 2){
+        cin >> k;
+    }
+    int delK;
+    int ostatki[k] = {0};
+    // на строке выше почему то вс код выделяет ошибку но при этом все работает как надо
+    for (int i = 0; i < 12; i++){
+        int ostatok = ((arr[i] % k) + k) % k;
+        ostatki[ostatok]++;
+    }
+    for (int i = 0; i < k; i++){
+        cout << "Остаток " << i << ": " << ostatki[i] << endl;
+    }
+    int currentOstatok = -1;
+    int currentLen = 0;
+    bestLen = 0;
+    int start = 0;
+    int fitstInd = 0;
+    int finishInd = 0;
+    for (int i = 0; i < 12; i++){
+        int ostatok = ((arr[i] % k) + k) % k;
+        if (ostatok == currentOstatok){
+            currentLen++;
+        } else{
+            currentOstatok = ostatok;
+            start = i;
+            currentLen = 1;
+        }
+        if (currentLen > bestLen){
+            bestLen = currentLen;
+            fitstInd = start;
+            finishInd = i;
+        }
+    }
+    cout << "Самаю длинная непрерывная последовательность элементов массива, которые даютодинаковый остаток при делении на k: Начало(";
+    cout << fitstInd << ") Конец(" << finishInd << ") Длинна - " << bestLen<< endl;
+    // Tusk 9
+    int doubleArr[4][4] = {
+        {42,11,-21,442},
+        {-42,42,-21,4},
+        {24,42,-42,4},
+        {24,11,-21,42}
+    };
+    cout << "Исходный массив: " << endl;
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            cout << doubleArr[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    int scalar = 42;
+    // скаляры не проходили без понятия как его найти поэтому он будет произвольным
+    cout << "Массив умноженный на скаляр: " << endl;
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            cout << doubleArr[i][j] * scalar << "\t";
+        }
+        cout << endl;
+    }
+    int stolb,stroka;
+    for (int j = 0; j < 4; j++){
+        cout << "Сумма " << j+1 << " столба = ";
+        for (int i = 0; i < 4; i++){
+            stolb += doubleArr[i][j];
+        }
+        cout << stolb << endl;
+        stolb = 0;
+        
+    }
+    for (int i = 0; i < 4; i++){
+        cout << "Сумма " << i+1 << " строки = ";
+        for (int j = 0; j < 4; j++){
+            stroka += doubleArr[i][j];
+        }
+        cout << stroka << endl;
+        stroka = 0;
+        
+    }
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            if (doubleArr[i][j] < 0){
+                doubleArr[i][j] = 10;
+            }
+        }
+    }
+    int maxDD = doubleArr[0][0];
+    int min = doubleArr[0][0];
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            if (doubleArr[i][j] > maxDD){
+                maxDD = doubleArr[0][0];
+            }
+            if (doubleArr[i][j] < min){
+                min = doubleArr[0][0];
+            }
+        }
+    }
+    cout << "Мааксимум = " << maxDD << " Минимум = " << min << endl;
+    int doubleArrCopy[4][4] = {
+        {24,42,-42,4},
+        {24,11,-21,42},
+        {42,11,-21,442},
+        {-42,42,-21,4}
+    };
+    cout << "сложение двух массивов (итог):" << endl;
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            cout << doubleArr[i][j] + doubleArrCopy[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << "Поэлементное сравнение двух массивов (итог):" << endl;
+
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            if (doubleArr[i][j] < doubleArrCopy[i][j]){
+            cout << doubleArr[i][j] << " < " << doubleArrCopy[i][j] << "\t";
+            } else if (doubleArr[i][j] > doubleArrCopy[i][j]){
+                cout << doubleArr[i][j] << " > " << doubleArrCopy[i][j] << "\t";
+            } else{
+                cout << doubleArr[i][j] << " = " << doubleArrCopy[i][j] << "\t";
+            }
+
+        }
+        cout << endl;
+    }
     return 0;
 }
